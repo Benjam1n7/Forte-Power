@@ -40,17 +40,17 @@ export const DramaticHero: React.FC<DramaticHeroProps> = ({
       />
 
       {/* Hanging Pendant Lamp Graphic Fixtures */}
-      <div className="absolute top-0 left-16 md:left-32 flex flex-col items-center pointer-events-none z-10">
+      <div className="absolute top-0 left-16 md:left-32 flex flex-col items-center pointer-events-none z-10 animate-pendant-swing">
         <div className="w-[1.5px] h-20 md:h-28 bg-gradient-to-b from-neutral-600 to-neutral-400" />
         <div className="w-12 h-10 md:w-16 md:h-12 bg-gradient-to-b from-[#EAE6DF] to-[#D5CFC5] rounded-t-full shadow-lg relative flex items-end justify-center pb-0.5">
-          <div className="w-8 h-2 md:w-11 md:h-2.5 bg-[#FFF4DC] rounded-full blur-[1px] shadow-[0_0_15px_#FFE7B3]" />
+          <div className="w-8 h-2 md:w-11 md:h-2.5 bg-[#FFF4DC] rounded-full blur-[1px] shadow-[0_0_15px_#FFE7B3] animate-bulb-glow" />
         </div>
       </div>
 
-      <div className="absolute top-0 right-14 md:right-36 flex flex-col items-center pointer-events-none z-10 hidden sm:flex">
+      <div className="absolute top-0 right-14 md:right-36 flex flex-col items-center pointer-events-none z-10 hidden sm:flex animate-pendant-swing-delayed">
         <div className="w-[1.5px] h-24 md:h-36 bg-gradient-to-b from-neutral-600 to-neutral-400" />
         <div className="w-16 h-11 md:w-20 md:h-14 bg-gradient-to-b from-[#2E2B33] to-[#1C1A20] rounded-t-full border-t border-neutral-600 shadow-xl relative flex items-end justify-center pb-0.5">
-          <div className="w-10 h-2 md:w-14 md:h-2.5 bg-[#FFE1A8] rounded-full blur-[2px] shadow-[0_0_20px_#FFCC80]" />
+          <div className="w-10 h-2 md:w-14 md:h-2.5 bg-[#FFE1A8] rounded-full blur-[2px] shadow-[0_0_20px_#FFCC80] animate-bulb-glow" />
         </div>
       </div>
 
