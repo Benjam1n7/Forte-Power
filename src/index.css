@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Bricolage Grotesque", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "Instrument Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", Menlo, Monaco, Consolas, monospace;
+
+  --color-paper: #F5F1E8;
+  --color-ink: #1B1B1A;
+  --color-cobalt: #2454E6;
+  --color-signal: #FF5B35;
+  --color-lime: #D9FF6B;
+  --color-grey: #6E6D68;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: #F5F1E8;
+    color: #1B1B1A;
+    background-image: 
+      linear-gradient(rgba(27, 27, 26, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(27, 27, 26, 0.04) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Authentic signal dot pulse animation (600ms single or periodic pulse) */
+@keyframes signalPulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 91, 53, 0.7);
+  }
+  70% {
+    transform: scale(1.08);
+    box-shadow: 0 0 0 8px rgba(255, 91, 53, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(255, 91, 53, 0);
+  }
+}
+
+.animate-signal-pulse {
+  animation: signalPulse 2s infinite cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.signal-dot {
+  display: inline-block;
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background-color: #FF5B35;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F1E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #1B1B1A;
+  border-radius: 4px;
+}

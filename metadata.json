@@ -1,0 +1,6 @@
+{
+  "name": "Forte Power",
+  "description": "Engineered power-resilience kits and blackout protection hardware for Nigeria.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
