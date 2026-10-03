@@ -29,6 +29,56 @@ const apiPlugin = (): Plugin => ({
     const NATIONWIDE_SHIPPING_FEE = 3500;
 
     server.middlewares.use((req, res, next) => {
+      // Dev-only file-read endpoint to return parsed values from .env.local
+      if (req.url === '/__dev/envfile' && req.method === 'GET') {
+        try {
+          const fs = require('fs');
+          const candidates = [
+            path.resolve(process.cwd(), '.env.local'),
+            path.resolve(__dirname, '.env.local'),
+            path.resolve(process.cwd(), '.env'),
+            path.resolve(__dirname, '.env'),
+            path.resolve(process.env.HOME || process.env.USERPROFILE || '.', '.env.local')
+          ];
+          let foundPath = null;
+          let text = '';
+          for (const p of candidates) {
+            try {
+              if (fs.existsSync(p)) {
+                foundPath = p;
+                text = fs.readFileSync(p, 'utf8');
+                break;
+              }
+            } catch (e) {
+              // ignore
+            }
+          }
+          const out = { source: foundPath, raw: text, VITE_SUPABASE_URL: null, VITE_SUPABASE_ANON_KEY_present: false };
+          text.split(/\r?\n/).forEach(line => {
+            const m = line.match(/^\s*VITE_SUPABASE_URL\s*=\s*"?(.*?)"?\s*$/);
+            if (m) out.VITE_SUPABASE_URL = m[1];
+            const m2 = line.match(/^\s*VITE_SUPABASE_ANON_KEY\s*=\s*"?(.*?)"?\s*$/);
+            if (m2) out.VITE_SUPABASE_ANON_KEY_present = Boolean(m2[1]);
+          });
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify(out));
+          return;
+        } catch (err) {
+          res.statusCode = 500;
+          res.end(JSON.stringify({ error: String(err) }));
+          return;
+        }
+      }
+      // Dev-only endpoint to inspect server-side env values for diagnostics
+      if (req.url === '/__dev/env' && req.method === 'GET') {
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify({
+          VITE_SUPABASE_URL: process.env.VITE_SUPABASE_URL || null,
+          VITE_SUPABASE_ANON_KEY_present: Boolean(process.env.VITE_SUPABASE_ANON_KEY),
+          cwd: process.cwd()
+        }));
+        return;
+      }
       if (req.url === '/api/calculate-order' && req.method === 'POST') {
         let body = '';
         req.on('data', chunk => { body += chunk; });
@@ -157,6 +207,9 @@ const apiPlugin = (): Plugin => ({
 
 export default defineConfig(() => {
   return {
+    // Ensure Vite reads env files from the project root so `.env.local`
+    // is prioritized over workspace/global examples.
+    envDir: path.resolve(__dirname, '.'),
     plugins: [react(), tailwindcss(), apiPlugin()],
     resolve: {
       alias: {

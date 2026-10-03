@@ -16,7 +16,40 @@
   </head>
   <body class="bg-[#F5F1E8] text-[#1B1B1A] antialiased selection:bg-[#FF5B35] selection:text-white">
     <div id="root"></div>
+    <!-- Dev: set runtime override early so modules can read correct Supabase URL before evaluation -->
+    <script type="module">
+      try {
+        // In a module script `import.meta.env` is available and statically
+        // replaced by Vite. Only set the override in development to avoid
+        // leaking secrets in production builds.
+        if (import.meta.env.MODE === 'development') {
+          // @ts-ignore
+          window.__VITE_ENV_OVERRIDE__ = {
+            VITE_SUPABASE_URL: import.meta.env.VITE_SUPABASE_URL || null,
+            VITE_SUPABASE_ANON_KEY: import.meta.env.VITE_SUPABASE_ANON_KEY || null,
+          };
+          // eslint-disable-next-line no-console
+          console.log('Dev: applied __VITE_ENV_OVERRIDE__');
+        }
+      } catch (e) {
+        // ignore
+      }
+    </script>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Dev helper: clear Supabase localStorage keys when visiting /?clearSb=true
+      try {
+        const url = new URL(window.location.href);
+        if (url.searchParams.get('clearSb') === 'true') {
+          Object.keys(localStorage)
+            .filter(k => k.startsWith('sb-'))
+            .forEach(k => localStorage.removeItem(k));
+          console.log('Dev: cleared sb-* localStorage keys');
+        }
+      } catch (e) {
+        // ignore in non-browser environments
+      }
+    </script>
   </body>
 </html>
 

@@ -1,0 +1,14 @@
+﻿C:\Users\Benjamin\.cline\data\workspaces\chat\forte-power\.env.example
+C:\Users\Benjamin\.codex\.tmp\plugins\plugins\hugging-face\skills\community-evals\examples\.env.example
+C:\Users\Benjamin\AppData\Roaming\Microsoft\Windows\Recent\.env.example.lnk
+C:\Users\Benjamin\Depath\backend\app\.env
+C:\Users\Benjamin\Depath\backend\app\core\.env
+C:\Users\Benjamin\Documents\Codex\2026-07-13\files-mentioned-by-the-user-depath\work\depath-src\Depath-main\.env.example
+C:\Users\Benjamin\Downloads\depath (2)\.env.example
+C:\Users\Benjamin\Downloads\depath (5)\.env.example
+C:\Users\Benjamin\Downloads\depath (5)\.env.local
+C:\Users\Benjamin\Downloads\depath (8)\.env.example
+C:\Users\Benjamin\Downloads\Depath-main\Depath-main\.env.example
+C:\Users\Benjamin\Downloads\figure-it-out-ai-main (1)\figure-it-out-ai-main\.env
+C:\Users\Benjamin\Downloads\forte-power\.env.example
+C:\Users\Benjamin\Forte-Power\.env.local
