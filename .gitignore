@@ -6,3 +6,14 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# --- Mobile (Expo) additions ---
+mobile/.env
+mobile/.expo/
+mobile/android/
+mobile/ios/
+mobile/dist/
+*.apk
+*.aab
+*.jks
+*.keystore

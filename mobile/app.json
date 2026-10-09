@@ -1,0 +1,46 @@
+{
+  "expo": {
+    "name": "Forte Options",
+    "slug": "forte-options",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "forteoptions",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F5F1E8",
+    "ios": {
+      "bundleIdentifier": "ng.forteoptions.shop",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "ng.forteoptions.shop",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#FF5B35",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F5F1E8",
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 160
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}
