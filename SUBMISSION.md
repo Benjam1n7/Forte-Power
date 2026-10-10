@@ -24,14 +24,22 @@ Key files for review:
 
 ## 2. APK download link
 
-> **⬅️ PASTE YOUR GOOGLE DRIVE / FILE-SHARE LINK HERE**
+> **https://expo.dev/artifacts/eas/o0UeneIQCk6_nHOZTAycpW5LzVAzet4YPxDWEUWdUew.apk**
 
-Build it by double-clicking **`BUILD-APK.bat`** at the repo root (cloud build,
-no local Android tools needed), then upload the produced `.apk` to Google Drive
-with "Anyone with the link" access.
+> **Recommended for submission:** also upload this APK to **Google Drive** and put
+> that link here, because the direct Expo artifact link expires ~2 weeks after the
+> build and some networks have trouble downloading from Expo directly.
+> Steps: open the link above → download `forte-options.apk` → upload to Google
+> Drive → set sharing to "Anyone with the link" → paste the Drive link below.
 
+Google Drive / file-share link:
+> **⬅️ PASTE YOUR GOOGLE DRIVE LINK HERE (optional but recommended)**
+
+Build details:
 - Application ID: `ng.forteoptions.shop`
 - Build type: installable **APK** (preview profile), not an App Bundle
+- Built with EAS (profile `preview`), SDK 57.0.0, version 1.0.0
+- To rebuild: double-click **`BUILD-APK.bat`** at the repo root
 
 ---
 
