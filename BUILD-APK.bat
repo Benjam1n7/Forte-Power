@@ -61,10 +61,11 @@ if errorlevel 1 (
 
 REM 5. Build the APK
 echo [4/4] Starting the cloud build. This usually takes 10-20 minutes.
-echo        When it finishes, a download link for the .apk is printed below
+echo        - If asked "Generate a new Android Keystore?", just press ENTER.
+echo        - When it finishes, a download link for the .apk is printed below
 echo        and saved to your Expo account dashboard.
 echo.
-call npx --yes eas-cli@latest build --platform android --profile preview --non-interactive
+call npx --yes eas-cli@latest build --platform android --profile preview
 if errorlevel 1 (
   echo.
   echo [ERROR] The build did not finish. Scroll up to read the reason.
